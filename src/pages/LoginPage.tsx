@@ -73,8 +73,8 @@ const LoginPage: React.FC = () => {
           sessionStorage.setItem('token', 'mock-token');
           sessionStorage.setItem('username', form.username.trim());
         }
-        // Redirect to dashboard (or home for now)
-        navigate('/', { state: { welcome: `Welcome back, ${form.username.trim()}!` } });
+        // Redirect to dashboard
+        navigate('/dashboard');
       } else {
         setServerError(data.message || 'Incorrect username or password.');
       }

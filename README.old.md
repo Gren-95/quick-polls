@@ -1,2 +1,0 @@
-# quick-polls
-Quick Polls

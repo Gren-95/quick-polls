@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# Quick Polls
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Quick Polls is a modern web application for creating, sharing, and managing polls and quizzes. It features user authentication, a dashboard, and a dynamic poll builder with support for multiple questions and answer types.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **User Authentication**: Secure signup and login forms with validation and session/token storage.
+- **Dashboard**: Personalized dashboard for logged-in users, with quick access to poll creation and management.
+- **Poll Creation**: Dynamic UI to add, remove, and reorder questions. Each question supports multiple answer options, single/multiple choice, and answer randomization.
+- **Access Control**: Only authenticated users can create polls. Each poll is owned by its creator.
+- **Shareable Polls**: After creation, a unique poll link is generated for sharing and collecting responses.
+- **Responsive Design**: Clean, modern, and user-friendly interface.
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-### `npm test`
+### Running the App
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend (React):**
+  ```bash
+  npm start
+  ```
+  Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### `npm run build`
+- **Development with Nodemon:**
+  If you have a backend entry point (e.g., `src/index.js`), you can use:
+  ```bash
+  npm run dev
+  ```
+  *(Note: This is only relevant if you add a backend/server to the project.)*
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Main Scripts
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `npm start` — Run the React frontend in development mode.
+- `npm run build` — Build the app for production.
+- `npm test` — Run tests (if available).
+- `npm run dev` — Run backend with nodemon (if applicable).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project Structure
 
-### `npm run eject`
+- `src/pages/` — Main pages (Dashboard, Login, Signup, CreatePoll, PollView)
+- `src/components/` — Reusable UI components
+- `src/utils/` — Utility modules (validation, mock API)
+- `src/styles/` — CSS files
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Developer Notes
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Nodemon** is included as a devDependency for backend/server development. If you only use the React frontend, you can ignore the `dev` script.
+- All authentication and poll logic is currently mocked in the frontend for demonstration purposes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## License
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+MIT
