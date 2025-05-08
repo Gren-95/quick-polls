@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// Import our mock API to initialize it
+import './utils/mockApi';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
