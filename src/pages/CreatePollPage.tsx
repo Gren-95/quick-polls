@@ -145,13 +145,55 @@ const CreatePollPage: React.FC = () => {
       return;
     }
     setLoading(true);
-    // Simulate POST to /api/polls/create
-    setTimeout(() => {
+    
+    try {
+      // Get user ID from localStorage
+      const userId = localStorage.getItem('userId');
+      
+      if (!userId) {
+        setError('You must be logged in to create a poll');
+        setLoading(false);
+        return;
+      }
+      
+      // Format the questions for our API
+      const formattedQuestions = questions.map(q => ({
+        id: q.id,
+        text: q.prompt,
+        type: q.type,
+        options: q.options.map(o => ({
+          id: o.id,
+          text: o.text
+        }))
+      }));
+      
+      // Create the poll
+      const response = await fetch('/api/polls/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          title: pollTitle,
+          description: 'Created with Quick Polls',
+          createdBy: userId,
+          isRestricted: false,
+          questions: formattedQuestions
+        })
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to create poll');
+      }
+      
+      setSuccessLink(`/polls/${data.pollId}`);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred while creating the poll');
+    } finally {
       setLoading(false);
-      // Generate mock poll link (in real app, use response)
-      const pollId = Math.random().toString(36).substring(2, 8);
-      setSuccessLink(`/polls/${pollId}`);
-    }, 1200);
+    }
   };
 
   // Copy to clipboard
